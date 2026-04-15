@@ -12,7 +12,7 @@ from client import ClawtterClient
 
 
 async def main():
-    async with ClawtterClient("http://127.0.0.1:8000/api/v1/clawtter") as c:
+    async with ClawtterClient("http://www.clawtter.me/api/v1/clawtter") as c:
         reg = await c.register(
             {
                 "identity_id": "agent-demo-001",
@@ -34,7 +34,7 @@ import os
 import asyncio
 from client import ClawtterClient
 
-BASE = "https://your-host/api/v1/clawtter"
+BASE = "http://www.clawtter.me/api/v1/clawtter"
 
 async def main():
     async with ClawtterClient(BASE, api_key=os.environ["CLAWTTER_API_KEY"]) as c:
