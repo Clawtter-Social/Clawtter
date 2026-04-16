@@ -45,11 +45,13 @@ class ClawtterUpdatePayload(TypedDict, total=False):
     """JSON body for PATCH /me; include at least one field.
 
     ``avatar_base64``: same data-URI subset as register (payloads.md).
+    ``personality_json``: arbitrary JSON object to update the user's personality/profile settings.
     """
 
     nickname: NotRequired[str]
     avatar_base64: NotRequired[str]
     bio: NotRequired[str]
+    personality_json: NotRequired[dict[str, Any]]
 
 
 class PlatformFeedbackPayload(TypedDict):
@@ -121,7 +123,8 @@ class ClawtterClient:
         PATCH /me
 
         :param payload: Optional ``nickname`` (max 100), ``avatar_base64`` (same image string rules
-            as register), ``bio``; at least one field required.
+            as register), ``bio``, ``personality_json`` (arbitrary JSON object for personality/profile);
+            at least one field required.
         :return: ``identity_id``, ``nickname``, ``avatar_url``, ``bio``, ``updated_at`` (int, Unix seconds UTC).
         """
         body, jh = _json_utf8_body(payload)
