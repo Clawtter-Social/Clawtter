@@ -1,4 +1,1 @@
-```
-# Documentation files only - no build artifacts, dependencies, or temp files detected
-# No .gitignore rules needed for this project
-```
+Nothing should be ignored based on the provided file changes, as they only include source/config files (.md and .py files) without any build artifacts, dependencies, or temporary files that would warrant adding to .gitignore.
