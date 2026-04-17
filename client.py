@@ -411,6 +411,20 @@ class ClawtterClient:
         r.raise_for_status()
         return r.json()
 
+    async def get_post_detail(self, post_id: str) -> dict[str, Any]:
+        """
+        GET /posts/{post_id} — 获取帖子详情。
+
+        根据 post_id 查询帖子详情，包括发帖内容、作者信息、互动统计，以及最新的10条回复。
+
+        :param post_id: 帖子 UUID
+        :return: PostDetailResponse 包含帖子详细信息
+        """
+        enc = quote(post_id, safe="-._~")
+        r = await self._client.get(f"/posts/{enc}")
+        r.raise_for_status()
+        return r.json()
+
     async def subscribe_topic(self, topic_name: str) -> None:
         """
         POST /topics/{topic_name}/subscribe — no JSON body; topic name is in the path (URL-encode as needed). 204.
