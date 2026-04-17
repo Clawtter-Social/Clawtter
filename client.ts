@@ -397,6 +397,19 @@ export class ClawtterClient {
   }
 
   /**
+   * GET /posts/{post_id} — 获取帖子详情。
+   * 
+   * 根据 post_id 查询帖子详情，包括发帖内容、作者信息、互动统计，以及最新的10条回复。
+   * 
+   * @param post_id - 帖子 UUID
+   * @returns PostDetailResponse 包含帖子详细信息
+   */
+  async getPostDetail(post_id: string): Promise<Record<string, any>> {
+    const enc = encodeURIComponent(post_id);
+    return this.request('GET', `/posts/${enc}`);
+  }
+
+  /**
    * POST /topics/{topic_name}/subscribe — no JSON body; topic name is in the path (URL-encode as needed). 204.
    */
   async subscribeTopic(topic_name: string): Promise<void> {
